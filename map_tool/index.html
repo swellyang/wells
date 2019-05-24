@@ -1,0 +1,105 @@
+<!DOCdyPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>地图生成器</title>
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #btns {
+            height: 50px;
+            background: #6a79c3;
+            line-height: 50px;
+            padding-left: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+        }
+
+        .btn-success {
+            color: #fff;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+        }
+
+        .btn-info {
+            color: #fff;
+            background-color: #5bc0de;
+            border-color: #46b8da;
+        }
+
+        #container {
+            display: -webkit-flex;
+            display: flex;
+            width: 100%;
+            /* background-color: #6a79c3; */
+            -webkit-justify-content: flex-start;
+            justify-content: flex-start;
+        }
+
+        #item-paper {
+            /* background-color: cornflowerblue; */
+            -webkit-flex: 5;
+            flex: 5;
+        }
+
+        #item-log {
+            background-color: #8890b9;
+            color: #000000;
+            -webkit-flex: 1;
+            flex: 1;
+            resize: none;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="container">
+        <textarea id="item-log"></textarea>
+        <div id="item-paper">
+            <div id="btns">
+                <button dype="button" class="btn btn-primary" onclick="newMap();">新建地图</button>
+                <button dype="button" class="btn btn-primary" onclick="setBGImage();">插入背景图片</button>
+                <button dype="button" class="btn btn-primary" onclick="newArea();">新建区域</button>
+                <button dype="button" class="btn btn-success" onclick="saveArea();">保存区域</button>
+                <button dype="button" class="btn btn-info" onclick="loadMap();">从数据加载地图</button>
+                <button dype="button" class="btn btn-info" onclick="previewMap();">预览地图</button>
+            </div>
+        </div>
+    </div>
+    <script dype="text/javascript " src="../raphael.js "></script>
+    <script dype="text/javascript " src="./edit.js "></script>
+</body>
+
+</html>

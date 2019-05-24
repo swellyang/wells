@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>特效</title>
+
+</head>
+
+<body>
+
+    <div id="root"></div>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="../raphael.js"></script>
+    <script type="text/javascript">
+        var paper, root;
+        var dotR = 6;
+        //计算宽高属性
+        var winWidth = window.innerWidth;
+        var winHeight = window.innerHeight;
+        var boxX = 0;
+        var boxY = 0;
+        var boxWidth = winWidth;
+        var boxHeight = winHeight;
+        var interval1, interval2, interval3;
+        var circles = [];
+        var circleTemps = [],
+            circleTemps1 = [],
+            circleTemps2 = [];
+
+
+        function init() {
+            while (boxWidth / boxHeight <= 3) {
+                boxHeight -= 10;
+            }
+            boxX = 0;
+            boxY = (winHeight - boxHeight) / 2;
+            paper = Raphael(boxX, boxY, boxWidth, boxHeight);
+            root = paper.rect(0, 0, boxWidth, boxHeight);
+            root.attr({
+                "stroke": "#ddd",
+                "stroke-width": 4
+            }).glow({
+                "width": 60,
+                "fill": false,
+                "opacity": 0.8,
+                "offsetx": 0,
+                "offsety": 0,
+                "color": "green"
+            });
+            generateDots();
+            animateDots();
+        }
+
+        function generateDots() {
+            for (var i = 0; i < PointData.length; i++) {
+                var point = PointData[i];
+                var circle = paper.circle(point[0], point[1], dotR);
+                circle.attr({
+                    "stroke-width": 0
+                });
+                circles.push(circle);
+                circleTemps.push(i);
+            }
+            circleTemps1 = circleTemps.slice(0);
+            circleTemps2 = circleTemps.slice(0);
+        }
+
+        function animateDots() {
+            var k = 0;
+            interval1 = window.setInterval(function () {
+                circles[k].animate({
+                    "fill": "#A8FF24",
+                    "stroke-width": 2,
+                    "stroke": "#FFFF37"
+                }, 10, "linear");
+                k++;
+                if (k >= circles.length) {
+                    runBlink();
+                    window.clearInterval(interval1);
+                    return false;
+                }
+            }, 10);
+        }
+
+        function runBlink() {
+            interval2 = window.setInterval(function () {
+                var k = parseInt(Math.random() * circleTemps.length);
+                circles[circleTemps[k]].animate({
+                    "fill": "#FF359A",
+                    "stroke-width": 0
+                }, 50, "linear", function () {});
+                // console.log(circleTemps[k] + "------" + circleTemps.length);
+                if (circleTemps.length == 1) {
+                    console.log("over......");
+                    window.clearInterval(interval2);
+                    runDown();
+                    return false;
+                } else {
+                    circleTemps.splice(k, 1);
+                }
+            }, 50);
+        }
+
+        function runDown() {
+            interval3 = window.setInterval(function () {
+                var k = parseInt(Math.random() * circleTemps1.length);
+                circles[circleTemps1[k]].animate({
+                    "cy": boxHeight - 20
+                }, 50, "elastic", function () {});
+                // console.log(circleTemps1[k] + "------" + circleTemps1.length);
+                if (circleTemps1.length == 1) {
+                    console.log("over1......");
+                    window.clearInterval(interval3);
+                    return false;
+                } else {
+                    circleTemps1.splice(k, 1);
+                }
+            }, 50);
+        }
+
+        init();
+    </script>
+</body>
+
+</html>
