@@ -7,14 +7,46 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Github Pages View</title>
-		</style>
+		<link href="./iview/styles/iview.css" rel="stylesheet">
 	</head>
 
 	<body>
-		<h1>Github Pages View </h1>
+		<div id="app">
+			<h1>Github Pages View </h1>
+			<h2>{{$t("greeting")}}</h2>
+			<i-button @click="changeLocaleLanguage">切换</i-button>
+		</div>
+		<script type="text/javascript" src="./iview/locale/system-en.js"></script>
+		<script type="text/javascript" src="./iview/locale/system-zh.js"></script>
+		<script type="text/javascript" src="./iview/vue.min.js"></script>
+		<script type="text/javascript" src="./iview/vue-i18n.min.js"></script>
+		<script type="text/javascript" src="./iview/iview.min.js"></script>
+		<script type="text/javascript" src="./iview/locale/en-US.js"></script>
+		<script type="text/javascript" src="./iview/locale/zh-CN.js"></script>
 
 		<script type="text/javascript">
+			const messages = {
+				en: Object.assign(SysLang.en, iview.langs['en-US']),
+				zh: Object.assign(SysLang.zh, iview.langs['zh-CN'])
+			};
+			const i18n = new VueI18n({
+				locale: 'en', // set locale
+				messages // set locale messages
+			})
 
+			var app = new Vue({
+				el: '#app',
+				i18n: i18n,
+				methods: {
+					changeLocaleLanguage: function() {
+						if (this.$i18n.locale == "en") {
+							this.$i18n.locale = "zh";
+						} else {
+							this.$i18n.locale = "en";
+						}
+					}
+				}
+			});
 		</script>
 	</body>
 

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>工作日志</title>
+		<style>
+			ul{
+				list-style: decimal;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<h3>20190412</h3>
+			<ul>
+				<li>整合之前的配置转换模块，结合系统资源库和数据库配置，保存到资源库</li>
+				<li>开发数据源配置功能,整合转换配置功能</li>
+				<li>开发Kettle定长截取文本文件输入功能</li>
+				<li>开发动态加载表数据功能，通过sql查询</li>
+				<li>开发手动上传源文件功能，</li>
+			</ul>
+			<h3>20190415</h3>
+			<ul>
+				<li>KTR配置功能完善</li>
+				<li>添加系统字段变量获取步骤</li>
+				<li>保存KTR资源库id，返回到作业配置模块</li>
+				<li>KTR添加序号标识，配合excel数据源方便查找</li>
+				<li>JNDI数据直连配置，功能已实现，但需要确认数据源维护清空</li>
+				<li>优化配置表单元素区域，数据库分为资源库、源数据库、目标数据库</li>
+				<li>ODS数据导出开发中</li>
+			</ul>
+			<h3>20190423</h3>
+			<ul>
+				<li>ODS数据导出功能,导出数据为已审核状态的，导出txt，excel，csv,批量导出txt、excel、csv压缩文件</li>
+				<li>修改对象管理页面-模板列表表信息不显示bug</li>
+				<li>ktr生成配置提示覆盖信息</li>
+			</ul>
+			<h3>20190429</h3>
+			<ul>
+				<li>联调数据源配置-生成KTR-文件下发-执行job导入数据功能流程，编写生成测试数据测试代码功能</li>
+				<li>优化KTR配置功能保存逻辑</li>
+				<li>研究KTR一键导入导出模式</li>
+			</ul>
+			<h3>20190506</h3>
+			<ul>
+				<li>创建并插入数据到ODS补录测试表，创建测试配置文件、测试数据文件、联调测试</li>
+				<li>添加导入ktr文件到资源库方法</li>
+				<li>研究数据校验模块</li>
+				<li>测试ktr多种类型配置，修改ktr配置bug</li>
+				<li>数据清洗配置，上传job和trans到资源库，灵活配置新上传的路径并且更新到job里</li>
+			</ul>
+
+			<h3>20190513</h3>
+			<ul>
+				<li>根据客户提供的数据源文件配置数据源，比对问题</li>
+				<li>KTR配置功能中添加字段选择步骤，接收字符串参数转日期参数</li>
+				<li>KTR配置功能中添加增加序列步骤，添加主键字段</li>
+				<li>ktr配置功能中记录运行日志信息到日志表</li>
+			</ul>
+			<h3>20190520</h3>
+			<ul>
+				<li>研究kettle外部jndi逻辑,暂未找到方法</li>
+				<li>测试ETL模块整体流程</li>
+				<li>测试ODS模块整体流程</li>
+				<li>修改KTR配置生成CSV行尾规则问题，只能设置头部为1行或者0行</li>
+				<li>修改优化数据源配置、KTR配置、作业信息配置功能流程链，使操作化繁为简</li>
+				<li>数据源配置模块添加DB直连类型</li>
+				<li>新增批量同步XML字段配置数据功能</li>
+			</ul>
+			<h3>20190528</h3>
+			<ul>
+				<li>修改数据源配置页面目标表名称为ODS表名，并相应修改KTR配置表名配置</li>
+				<li>修改数据源配置页面操作按钮显示bug</li>
+				<li>测试全息视图数据导入功能，配置1G压缩文件数据源，4G txt数据源，目测导入要3个小时以上</li>
+				<li>修改数据源配置重新生成ktr时候，保存系统参数重复bug</li>
+				<li>根据客户规范重新批量构建ODS表建表语句</li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+
+		</script>
+	</body>
+
+</html>
