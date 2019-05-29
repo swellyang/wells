@@ -1,6 +1,6 @@
 if (!window.SysLang) {
 	SysLang = {};
 }
-SysLang.zh = {
+SysLang.zhCN = {
 	greeting: "你好 !"
 }

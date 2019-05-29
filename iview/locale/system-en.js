@@ -1,6 +1,6 @@
 if (!window.SysLang) {
 	SysLang = {};
 }
-SysLang.en = {
+SysLang.enUS = {
 	greeting: "hello !"
 }
