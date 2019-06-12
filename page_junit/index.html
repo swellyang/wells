@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Page JUnit</title>
+		<link href="../iview/styles/iview.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div id="app" style="padding: 100px;">
+			<i-row>
+				<i-col span="24">
+					<i-form :model="formItem" :label-width="80">
+						<form-item label="设置Auth">
+							<i-input type="text" v-model="Auth">
+								<span slot="prepend">Auth</span>
+								<i-button @click="updateAuth" slot="append">更新</i-button>
+							</i-input>
+						</form-item>
+						<form-item label="测试类型">
+							<i-select v-model="testSourceKey" @on-change="changeTestSource">
+								<i-option v-for="item in testSourceArray" :key="item.key" :value="item.key">{{item.title}}</i-option>
+							</i-select>
+						</form-item>
+						<form-item label="请求地址">
+							<i-input type="text" v-model="requestUrl" />
+						</form-item>
+						<form-item label="请求参数">
+							<i-input type="text" v-model="requestParams" />
+						</form-item>
+						<form-item label="请求主体">
+							<i-input type="textarea" v-model="requestBody" />
+						</form-item>
+						<form-item label="">
+							<i-button @click="doSubmit">提交</i-button>
+						</form-item>
+						<form-item label="返回主体">
+							<div v-html="responseBody" style="width: 100%;overflow: auto;border: 1px solid #ddd;min-height: 100px;"></div>
+						</form-item>
+					</i-form>
+				</i-col>
+			</i-row>
+
+		</div>
+		<script type="text/javascript" src="../iview/vue.min.js"></script>
+		<script type="text/javascript" src="../iview/iview.min.js"></script>
+		<script type="text/javascript" src="../scripts/jquery.min.js"></script>
+		<script type="text/javascript" src="../scripts/common.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					Auth: getToken(),
+					formItem: null,
+					requestUrl: "",
+					requestParams: "",
+					requestBody: "",
+					responseBody: "",
+					testSourceKey: "",
+					testSourceArray: [],
+				},
+				mounted: function() {
+					var self = this;
+					$.getJSON("./jsons/test_source.json", function(json) {
+						self.testSourceArray = json;
+					});
+				},
+				methods: {
+					updateAuth: function() {
+						setToken(this.Auth);
+					},
+					doSubmit: function() {
+						var self = this;
+						$.ajaxGet(this.requestUrl, "", function(rs) {
+							if (rs && rs._data) {
+								self.responseBody = "<pre>" + formatJson(rs._data) + "</pre>";
+							} else {
+								console.log("没返回数据");
+							}
+						});
+					},
+					changeTestSource: function() {
+						for (var i = 0; i < this.testSourceArray.length; i++) {
+							var item = this.testSourceArray[i];
+							if (item.key == this.testSourceKey) {
+								this.requestUrl = item.requestUrl;
+								this.requestParams = item.requestParams;
+								this.requestBody = item.requestBody;
+								break;
+							}
+						}
+					}
+				}
+			});
+		</script>
+	</body>
+
+</html>

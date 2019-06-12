@@ -1,0 +1,15 @@
+[{
+	"key": "list_datasource",
+	"title": "加载数据源配置列表",
+	"requestUrl": "/KtlFile/getMore?pindex=0&pcount=15&_t=1559198061741",
+	"requestParams": "",
+	"requestBody": "",
+	"responseBody": ""
+}, {
+	"key": "test2",
+	"title": "测试222",
+	"requestUrl": "/KtlFile/getMore?pindex=0&pcount=15&_t=1559198061741",
+	"requestParams": "",
+	"requestBody": "",
+	"responseBody": ""
+}]
